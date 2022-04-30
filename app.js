@@ -49,7 +49,7 @@ function RowAdder(){
         let header=document.querySelector("#header")
         for(let i=0;i<header.children.length;i++){
             if(header.children[i].classList.contains("output")){
-                return i
+                return i;
             }
         }
     }
@@ -173,7 +173,7 @@ function Delete(){
         let output=[...document.querySelectorAll(".opHeader")];
         let i=0;
         row.forEach((item,index)=>{
-            if(item.children.length>2){
+            if(item.children.length-output.length>1){
                 item.deleteCell(item.children.length-output.length-1);
             }else {
                 if(i==0){
@@ -195,12 +195,14 @@ function Delete(){
     })
     del_pos_col.addEventListener("click",()=>{
         ValueToggle() 
+        let table=document.querySelector("table");
         let row=document.querySelectorAll("tr");
         let pos=document.querySelector("#pos_data_col");
+        let output=[...document.querySelectorAll(".opHeader")];
         if(pos.valueAsNumber<=row[0].children.length && pos.valueAsNumber>0){
             let i=0;
             row.forEach((item,index)=>{
-                if(item.children.length>2){
+                if(item.children.length-output.length>1){
                     item.deleteCell(pos.valueAsNumber-1);
                     
                 }else {
@@ -218,6 +220,7 @@ function Delete(){
     
     del_pos_row.addEventListener("click",()=>{
         ValueToggle() 
+        let table=document.querySelector("table");
         let row=document.querySelectorAll("tr");
         let pos=document.querySelector("#pos_data_row");
         if(pos.valueAsNumber>0 && pos.valueAsNumber<=table.children[0].children.length){
