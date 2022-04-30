@@ -18,12 +18,12 @@ window.onbeforeunload = function()
 };
 window.onbeforeunload = function (e) {
     e = e || window.event;
-
+    
     // For IE and Firefox prior to version 4
     if (e) {
         e.returnValue = 'Sure?';
     }
-
+    
     // For Safari
     return 'Sure?';
 };
@@ -144,7 +144,7 @@ function RowAdder(){
         }
         ValueToggle()
     })
-
+    
     
     
 }
@@ -258,7 +258,7 @@ function generate(){
     let output=[...document.querySelectorAll(".output")];
     let outputHead=[...document.querySelectorAll(".opHeader")];
     let header=[...document.querySelector("#header").children]
-    let _text=[],text_1="";
+    let _text=[],text_1="",_text_1=[],text_2="";
     let k=0;
     let x=0;
     // for(let i=0;i<header.length;i++){
@@ -270,22 +270,28 @@ function generate(){
     let table=document.querySelector("table").children[0]
     for(k=header.length-outputHead.length;k<header.length;k++){
         text_1="";
+        text_2="";
         for(let i=0;i<table.childElementCount;i++){
             if(table.children[i].children[k].innerText=="1"){
                 for(let j=0;j<header.length-outputHead.length;j++){
                     if(table.children[i].children[j].innerText=="1"){
                         text_1+=header[j].innerText;
+                        text_2+=header[j].innerText;
                     }else{
-                        text_1+="!"+header[j].innerText;
+                        text_1+=`!${header[j].innerText}`;
+                        text_2+=`\\\overline{${header[j].innerText}}`;
                     }
                 }
                 text_1+="+";
+                text_2+="+";
             }
         }
         text_1=text_1[text_1.length-1]=="+"?outputHead[x].innerText+"="+text_1.slice(0,-1):outputHead[x].innerText+"="+text_1;
+        text_2=text_2[text_2.length-1]=="+"?outputHead[x].innerText+"="+text_2.slice(0,-1):outputHead[x].innerText+"="+text_2;
         _text.push(text_1);
+        _text_1.push(text_2);
         x++;
-            
+        
     }
     
     // for(let j=1;j<table.childElementCount;j++){
@@ -298,13 +304,16 @@ function generate(){
     //             }
     //         }
     //             _text+="+";
-            
+    
     //     }
-        
+    
     // }
-    text_1="";
+    text_1="",text_2="";
     _text.forEach((item,index)=>{
         text_1+="<p>"+item+"</p>"
+    })
+    _text_1.forEach((item,index)=>{
+        text_2+="<p>"+item+"</p>"
     })
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -313,7 +322,7 @@ function generate(){
         },
         buttonsStyling: false
     })
-    
+    navigator.clipboard.writeText(_text_1);
     Swal.fire({
         title: 'Are you want to copy this?',
         html: `${text_1}`,
@@ -325,10 +334,11 @@ function generate(){
     }).then((result) => {
         if (result.isConfirmed) {
             navigator.clipboard.writeText(_text);
+            
             Swal.fire(
                 'Copies',
                 'success'
                 )
             }
         })
-    }
+}
