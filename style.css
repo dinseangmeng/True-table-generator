@@ -26,14 +26,16 @@ body {
   background: #1187c2;
   border-radius: 2.5px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 #table_container table td:hover, #table_container table th:hover {
   background: rgba(17, 135, 194, 0.7);
 }
 
-#table_container table td:last-child, #table_container table th:last-child {
-  border: 2px dashed black;
+#table_container table .output {
+  border: 2px dashed #516281;
+  background-color: rgba(0, 48, 71, 0.7);
 }
 
 #Button_container {

@@ -24,14 +24,16 @@ body{
             background: rgb(17, 135, 194);
             border-radius: 2.5px;
             cursor: pointer;
+            text-transform: uppercase;
             &:hover{
                 background: rgba(17, 135, 194,.7);
             }
-            &:last-child{
-                border: 2px dashed black;
-            }
+            
         }
-        
+        .output{
+            border: 2px dashed rgb(81, 98, 129);
+            background-color: rgba(0, 48, 71, 0.7);
+        }
     }
     
 }

@@ -12,6 +12,7 @@
     <div id="Button_container">
         <button class="row">Add Row</button>
         <button class="column">Add Column</button>
+        <button id="Output">Add Output</button>
         <button class="Delete_row">Delete Row</button>
         <button class="Delete_column">Delete Column</button>
         <div><button class="Delete_sp_row" >Delete at row</button> <input type="number" value="0" id="pos_data_row"></div>
@@ -21,17 +22,17 @@
     <div id="table_container">
         <table>
             <tr id="header">
-                <th contenteditable="">A</th>
-                <th contenteditable="">Output</th>
+                <th contenteditable="true">A</th>
+                <th contenteditable="true" class="output opHeader">Output</th>
             </tr>
             <tr>
                 <td>0</td>
-                <td>0</td>
+                <td class="output">0</td>
                 
             </tr>
             <tr>
                 <td>0</td>
-                <td>0</td>
+                <td class="output">0</td>
                 
             </tr>
         </table>
