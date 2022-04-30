@@ -4,29 +4,29 @@ let header=document.querySelector("#header")
 let table=document.querySelector("table")
 
 
-// window.onbeforeunload = function()
-// {
-//     var conf = confirm("Your data not save.\n Are you sure?");
-//     if(conf)
-//     {
-//         window.location.reload();
-//     }
-//     else
-//     {
-//         return "";
-//     }
-// };
-// window.onbeforeunload = function (e) {
-//     e = e || window.event;
+window.onbeforeunload = function()
+{
+    var conf = confirm("Your data not save.\n Are you sure?");
+    if(conf)
+    {
+        window.location.reload();
+    }
+    else
+    {
+        return "";
+    }
+};
+window.onbeforeunload = function (e) {
+    e = e || window.event;
 
-//     // For IE and Firefox prior to version 4
-//     if (e) {
-//         e.returnValue = 'Sure?';
-//     }
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = 'Sure?';
+    }
 
-//     // For Safari
-//     return 'Sure?';
-// };
+    // For Safari
+    return 'Sure?';
+};
 function ValueToggle(){
     [...document.querySelectorAll("td")].forEach((item, index)=>{
         item.addEventListener("click",()=>{
