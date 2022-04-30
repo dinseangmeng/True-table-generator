@@ -1,0 +1,65 @@
+*,*::before,*::after{
+    margin: 0;
+    padding:0 0.3rem;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    
+}
+#table_container{
+
+    table{
+        font-size: 1em;
+        width: 100%;
+        border: 1.5px solid black;
+        text-align: center;
+        td,th{
+            padding: 0.3em;
+            border: 1.5px solid black;
+            border: none;
+            outline: none;
+            background: rgb(17, 135, 194);
+            border-radius: 2.5px;
+            cursor: pointer;
+            &:hover{
+                background: rgba(17, 135, 194,.7);
+            }
+            &:last-child{
+                border: 2px dashed black;
+            }
+        }
+        
+    }
+    
+}
+#Button_container{
+    padding: .3rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap:0.3rem;
+    button{
+        padding: 0.3rem;
+        border: none;
+        outline: none;
+        background: rgb(8, 155, 228);
+        border-radius: 2px;
+        
+        &:hover{
+            background: rgba(8, 155, 228,0.8);
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        & {
+          flex-direction: column;
+          
+          +button{
+                margin: 0;
+                margin-top: 0;
+          }
+        }
+        
+    }
+}

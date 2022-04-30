@@ -1,0 +1,73 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0 0.3rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#table_container table {
+  font-size: 1em;
+  width: 100%;
+  border: 1.5px solid black;
+  text-align: center;
+}
+
+#table_container table td, #table_container table th {
+  padding: 0.3em;
+  border: 1.5px solid black;
+  border: none;
+  outline: none;
+  background: #1187c2;
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+
+#table_container table td:hover, #table_container table th:hover {
+  background: rgba(17, 135, 194, 0.7);
+}
+
+#table_container table td:last-child, #table_container table th:last-child {
+  border: 2px dashed black;
+}
+
+#Button_container {
+  padding: .3rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+#Button_container button {
+  padding: 0.3rem;
+  border: none;
+  outline: none;
+  background: #089be4;
+  border-radius: 2px;
+}
+
+#Button_container button:hover {
+  background: rgba(8, 155, 228, 0.8);
+}
+
+@media only screen and (max-width: 600px) {
+  #Button_container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #Button_container + button {
+    margin: 0;
+    margin-top: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */

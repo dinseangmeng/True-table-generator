@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Meng true table</title>
+</head>
+<body>
+    <div id="Button_container">
+        <button class="row">Add Row</button>
+        <button class="column">Add Column</button>
+        <button class="Delete_row">Delete Row</button>
+        <button class="Delete_column">Delete Column</button>
+        <div><button class="Delete_sp_row" >Delete at row</button> <input type="number" value="0" id="pos_data_row"></div>
+        <div><button class="Delete_sp_col" >Delete at col</button> <input type="number" value="0" id="pos_data_col"></div>
+        <button class="Generate" onclick="generate()">Generate Boolean Algebra</button>
+    </div>
+    <div id="table_container">
+        <table>
+            <tr id="header">
+                <th contenteditable="">A</th>
+                <th contenteditable="">Output</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                
+            </tr>
+        </table>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
