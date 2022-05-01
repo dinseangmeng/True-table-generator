@@ -27,6 +27,17 @@ window.onbeforeunload = function (e) {
     // For Safari
     return 'Sure?';
 };
+function clearColor(){
+    let table=document.querySelector("table")
+    let TD=[...document.querySelectorAll("td")]
+    table.addEventListener("mouseleave",()=>{
+        for(let i=0;i<TD.length;i++){
+            TD[i].style.backgroundColor="";
+        }
+    })
+
+}
+clearColor()
 function ValueToggle(){
     let TD=[...document.querySelectorAll("td")]
     TD.forEach((item, index)=>{
@@ -40,8 +51,8 @@ function ValueToggle(){
             }
             
                 
+            clearColor()
             })
-            
         item.addEventListener("contextmenu",(e)=>{
             for(let i=0;i<TD.length;i++){
                 TD[i].style.backgroundColor="";
@@ -50,7 +61,9 @@ function ValueToggle(){
             for(let i=0;i<item.parentElement.children.length;i++){
                 item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
             }
+            clearColor()
             e.preventDefault()
+            
         })
     })
     
