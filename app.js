@@ -35,7 +35,10 @@ function ValueToggle(){
             
             
         })
-        
+        item.addEventListener("contextmenu",(e)=>{
+            item.innerText="X"
+            e.preventDefault()
+        })
     })
     
     
@@ -279,11 +282,14 @@ function generate(){
                         tmp_1+=header[j].innerText;
                         //text_2+=header[j].innerText;
                         tmp_2+=header[j].innerText;
-                    }else{
+                    }else if(table.children[i].children[j].innerText=="0"){
                         //text_1+=`!${header[j].innerText}`;
                         tmp_1+=`!${header[j].innerText}`;
                         //text_2+=`\\\overline{${header[j].innerText}}`;
                         tmp_2+=`\\\overline{${header[j].innerText}}`;
+                    }else{
+                        tmp_1+="";
+                        tmp_2+=""
                     }
                 }
 
