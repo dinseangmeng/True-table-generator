@@ -31,8 +31,8 @@ body {
   text-transform: uppercase;
 }
 
-#table_container table td:hover, #table_container table th:hover {
-  background: rgba(17, 135, 194, 0.7);
+#table_container table td:hover {
+  background: black;
 }
 
 #table_container table .output {

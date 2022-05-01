@@ -27,10 +27,11 @@ body{
             border-radius: 2.5px;
             cursor: pointer;
             text-transform: uppercase;
-            &:hover{
-                background: rgba(17, 135, 194,.7);
-            }
             
+            
+        }
+        td:hover{
+            background: rgb(0,0,0);
         }
         .output{
             border: 2px dashed rgb(81, 98, 129);

@@ -28,19 +28,27 @@ window.onbeforeunload = function (e) {
     return 'Sure?';
 };
 function ValueToggle(){
-    [...document.querySelectorAll("td")].forEach((item, index)=>{
+    let TD=[...document.querySelectorAll("td")]
+    TD.forEach((item, index)=>{
         item.addEventListener("click",()=>{
-            
+            for(let i=0;i<TD.length;i++){
+                TD[i].style.backgroundColor="";
+            }
             item.innerText=item.innerText=="0"? "1":"0"
-            
+            item.style.backgroundColor="rgb(0, 0, 0)"
             
         })
         item.addEventListener("contextmenu",(e)=>{
+            for(let i=0;i<TD.length;i++){
+                TD[i].style.backgroundColor="";
+            }
             item.innerText="X"
+            item.style.backgroundColor="rgb(0, 0, 0)"
             e.preventDefault()
         })
     })
     
+
     
 }
 ValueToggle()  
