@@ -35,15 +35,21 @@ function ValueToggle(){
                 TD[i].style.backgroundColor="";
             }
             item.innerText=item.innerText=="0"? "1":"0"
-            item.style.backgroundColor="rgb(0, 0, 0)"
+            for(let i=0;i<item.parentElement.children.length;i++){
+                item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
+            }
             
-        })
+                
+            })
+            
         item.addEventListener("contextmenu",(e)=>{
             for(let i=0;i<TD.length;i++){
                 TD[i].style.backgroundColor="";
             }
             item.innerText="X"
-            item.style.backgroundColor="rgb(0, 0, 0)"
+            for(let i=0;i<item.parentElement.children.length;i++){
+                item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
+            }
             e.preventDefault()
         })
     })
