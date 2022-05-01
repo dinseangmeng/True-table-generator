@@ -16,6 +16,8 @@ body {
   width: 100%;
   border: 1.5px solid black;
   text-align: center;
+  color: white;
+  font-weight: bold;
 }
 
 #table_container table td, #table_container table th {
