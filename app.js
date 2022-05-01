@@ -258,7 +258,7 @@ function generate(){
     let output=[...document.querySelectorAll(".output")];
     let outputHead=[...document.querySelectorAll(".opHeader")];
     let header=[...document.querySelector("#header").children]
-    let _text=[],text_1="",_text_1=[],text_2="";
+    let _text=[],text_1="",_text_1=[],text_2="",tmp_1="",tmp_2="";
     let k=0;
     let x=0;
     // for(let i=0;i<header.length;i++){
@@ -275,15 +275,30 @@ function generate(){
             if(table.children[i].children[k].innerText=="1"){
                 for(let j=0;j<header.length-outputHead.length;j++){
                     if(table.children[i].children[j].innerText=="1"){
-                        text_1+=header[j].innerText;
-                        text_2+=header[j].innerText;
+                        //text_1+=header[j].innerText;
+                        tmp_1+=header[j].innerText;
+                        //text_2+=header[j].innerText;
+                        tmp_2+=header[j].innerText;
                     }else{
-                        text_1+=`!${header[j].innerText}`;
-                        text_2+=`\\\overline{${header[j].innerText}}`;
+                        //text_1+=`!${header[j].innerText}`;
+                        tmp_1+=`!${header[j].innerText}`;
+                        //text_2+=`\\\overline{${header[j].innerText}}`;
+                        tmp_2+=`\\\overline{${header[j].innerText}}`;
                     }
                 }
-                text_1+="+";
-                text_2+="+";
+
+                if(!isExist(tmp_1,text_1)){
+                    text_1+=tmp_1+"+";
+                    tmp_1="";
+                }else{
+                    tmp_1="";
+                }
+                if(!isExist(tmp_2,text_2)){
+                    text_2+=tmp_2+"+";
+                    tmp_2="";
+                }else{
+                    tmp_2="";
+                }
             }
         }
         text_1=text_1[text_1.length-1]=="+"?outputHead[x].innerText+"="+text_1.slice(0,-1):outputHead[x].innerText+"="+text_1;
@@ -341,4 +356,12 @@ function generate(){
                 )
             }
         })
+}
+function isExist(text,text1){
+    for(let i=0;i<text1.split("+").length;i++){
+        if(text1.split("+")[i]==text){
+            return true
+        }
+    }
+    return false;
 }
