@@ -31,7 +31,7 @@ body {
   text-transform: uppercase;
 }
 
-#table_container table td:hover {
+#table_container table tr:hover > td {
   background: black;
 }
 
