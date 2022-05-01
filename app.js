@@ -170,9 +170,16 @@ function Delete(){
     
     del_r.addEventListener("click",()=>{
         ValueToggle() 
+        
+        
         let row=document.querySelectorAll("tr");
         if(table.children[0].children.length>2){
-            table.children[0].deleteRow(table.children[0].childElementCount-1)
+            let conf=confirm("are you want to delete entire row?");
+            if(conf){
+                table.children[0].deleteRow(table.children[0].childElementCount-1)
+            }else{
+                return ""
+            }
         }else{
             alert("table at least has 1 row or cell")
         }
@@ -183,26 +190,32 @@ function Delete(){
         let row=document.querySelectorAll("tr");
         let output=[...document.querySelectorAll(".opHeader")];
         let i=0;
-        row.forEach((item,index)=>{
-            if(item.children.length-output.length>1){
-                item.deleteCell(item.children.length-output.length-1);
-            }else {
-                if(i==0){
-                    alert("table at least has 1 row or column");
-                    i++
+        let conf=confirm("are you want to delete entire Column?");
+        if(conf){
+            row.forEach((item,index)=>{
+                if(item.children.length-output.length>1){
+                    item.deleteCell(item.children.length-output.length-1);
+                }else {
+                    if(i==0){
+                        alert("table at least has 1 row or column");
+                        i++
+                    }
                 }
+            })
+            let header=document.querySelector("#header")
+            output=[...document.querySelectorAll(".opHeader")];
+            let count=Math.pow(2,header.childElementCount-output.length);
+            let table=document.querySelector("table");
+            let completeRow=table.children[0].childElementCount-count;
+            console.log(completeRow)
+            for(let i=1;i<completeRow;i++){
+                table.children[0].deleteRow(table.children[0].childElementCount-1)
             }
-        })
-        let header=document.querySelector("#header")
-        output=[...document.querySelectorAll(".opHeader")];
-        let count=Math.pow(2,header.childElementCount-output.length);
-        let table=document.querySelector("table");
-        let completeRow=table.children[0].childElementCount-count;
-        console.log(completeRow)
-        for(let i=1;i<completeRow;i++){
-            table.children[0].deleteRow(table.children[0].childElementCount-1)
+            ValueToggle()  
+
+        }else{
+            return""
         }
-        ValueToggle()  
     })
     del_pos_col.addEventListener("click",()=>{
         ValueToggle() 
@@ -212,17 +225,23 @@ function Delete(){
         let output=[...document.querySelectorAll(".opHeader")];
         if(pos.valueAsNumber<=row[0].children.length && pos.valueAsNumber>0){
             let i=0;
-            row.forEach((item,index)=>{
-                if(item.children.length-output.length>1){
-                    item.deleteCell(pos.valueAsNumber-1);
-                    
-                }else {
-                    if(i==0){
-                        alert("table at least has 1 row or column");
-                        i++
+            let conf=confirm(`are you want to delete at column ${pos.valueAsNumber}?`);
+            if(conf){
+                row.forEach((item,index)=>{
+                    if(item.children.length-output.length>1){
+                        item.deleteCell(pos.valueAsNumber-1);
+                        
+                    }else {
+                        if(i==0){
+                            alert("table at least has 1 row or column");
+                            i++
+                        }
                     }
-                }
-            })
+                })
+
+            }else{
+                return ""
+            }
         }else{
             alert("Position smaller than or bigger than column");
         }
@@ -236,7 +255,12 @@ function Delete(){
         let pos=document.querySelector("#pos_data_row");
         if(pos.valueAsNumber>0 && pos.valueAsNumber<=table.children[0].children.length){
             if(table.children[0].children.length>2){
-                table.children[0].deleteRow(pos.valueAsNumber)
+                let conf=confirm(`are you want to delete at row ${pos.valueAsNumber}?`);
+                if(conf){
+                    table.children[0].deleteRow(pos.valueAsNumber)
+                }else{
+                    return ""
+                }
             }else{
                 alert("table at least has 1 row or cell")
             }
