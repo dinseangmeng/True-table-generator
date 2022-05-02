@@ -27,6 +27,42 @@ window.onbeforeunload = function (e) {
     // For Safari
     return 'Sure?';
 };
+function Menu(){
+    const table=document.querySelector("table")
+    const header=[...document.querySelectorAll("th")]
+    const td=[...document.querySelectorAll("td")]
+    header.forEach((item,index)=>{
+        item.addEventListener("contextmenu",(e)=>{
+            const menu=document.querySelector(".menu");
+            menu.style.display="block";
+            menu.style.position="absolute";
+            menu.style.top=`${e.pageY}px`;
+            menu.style.left=`${e.pageX}px`;
+            e.preventDefault()
+        })
+    })
+    
+    document.addEventListener("contextmenu",(e)=>{
+        if(!td.includes(e.target)){
+            const menu=document.querySelector(".menu");
+            menu.style.display="block";
+            menu.style.position="absolute";
+            menu.style.top=`${e.pageY}px`;
+            menu.style.left=`${e.pageX}px`;
+            e.preventDefault()
+        }
+        e.preventDefault()
+    })
+    document.addEventListener("click",(e)=>{
+        if(!e.target.classList.contains("clickable")){
+            const menu=document.querySelector(".menu");
+            menu.style.display="none";
+        }else{
+            
+        }
+        e.preventDefault()
+    })
+}
 function clearColor(){
     let table=document.querySelector("table")
     let TD=[...document.querySelectorAll("td")]
@@ -71,7 +107,7 @@ function ValueToggle(){
     
 }
 ValueToggle()  
-
+Menu()
 
 function RowAdder(){
     ValueToggle()  

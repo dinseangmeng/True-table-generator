@@ -20,7 +20,7 @@
     <title>Meng true table</title>
 </head>
 <body>
-    <div id="Button_container">
+    <!-- <div id="Button_container">
         <button class="row">Add Row</button>
         <button class="column">Add Column</button>
         <button class="column_tr">Add Column trigger</button>
@@ -30,7 +30,7 @@
         <div><button class="Delete_sp_row" >Delete at row</button> <input type="number" value="0" id="pos_data_row"></div>
         <div><button class="Delete_sp_col" >Delete at col</button> <input type="number" value="0" id="pos_data_col"></div>
         <button class="Generate" onclick="generate()">Generate Boolean Algebra</button>
-    </div>
+    </div> -->
     <div id="table_container">
         <table title="click to toggle 0/1 and right click for 'X'">
             <tr id="header">
@@ -49,7 +49,17 @@
             </tr>
         </table>
     </div>
-    
+    <div class="menu clickable" >
+        <button class="row clickable">Add Row</button>
+        <button class="column clickable">Add Column</button>
+        <button class="column_tr clickable">Add Column trigger</button>
+        <button id="Output" class="clickable">Add Output</button>
+        <button class="Delete_row clickable">Delete Row</button>
+        <button class="Delete_column clickable">Delete Column</button>
+        <div class="clickable"><button class="Delete_sp_row clickable" >Delete at row</button> <input type="number" value="0" id="pos_data_row"></div>
+        <div class="clickable"><button class="Delete_sp_col clickable" >Delete at col</button> <input type="number" value="0" id="pos_data_col"></div>
+        <button class="Generate clickable" onclick="generate()">Generate Boolean Algebra</button>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
