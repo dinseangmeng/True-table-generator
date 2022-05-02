@@ -29,8 +29,7 @@ window.onbeforeunload = function (e) {
 };
 function Menu(){
     const table=document.querySelector("table")
-    const header=[...document.querySelectorAll("th")]
-    const td=[...document.querySelectorAll("td")]
+    let header=[...document.querySelectorAll("th")]
     header.forEach((item,index)=>{
         item.addEventListener("contextmenu",(e)=>{
             const menu=document.querySelector(".menu");
@@ -43,7 +42,7 @@ function Menu(){
     })
     
     document.addEventListener("contextmenu",(e)=>{
-        if(!td.includes(e.target)){
+        if(!e.target.classList.contains("unclickable")){
             const menu=document.querySelector(".menu");
             menu.style.display="block";
             menu.style.position="absolute";
@@ -111,6 +110,7 @@ Menu()
 
 function RowAdder(){
     ValueToggle()  
+    Menu()
     function firstChild(){
         let header=document.querySelector("#header")
         for(let i=0;i<header.children.length;i++){
@@ -129,15 +129,17 @@ function RowAdder(){
             let tmpTd=document.createElement("td");
             tmpTd.innerText="0"
             let className=(i>=header.childElementCount-output.length && i<header.childElementCount)?"output":"_";
-            tmpTd.classList.add(className);
+            tmpTd.classList.add(className,"unclickable");
             tmpTr.append(tmpTd);
         }
         table.children[0].append(tmpTr);
         ValueToggle()
+        Menu()
         
     })
     column.addEventListener("click",()=>{
         ValueToggle()
+        Menu()
         let header=document.querySelector("#header")
         let table=document.querySelector("table")
         let lastName
@@ -155,6 +157,7 @@ function RowAdder(){
             if(table.children[0].children[i].id!="header"){
                 lastChild=table.children[0].children[i].children[firstChild()-1]
                 let tmpTd=document.createElement("td");
+                tmpTd.classList.add("unclickable");
                 tmpTd.innerText="0";
                 table.children[0].children[i].insertBefore(tmpTd,lastChild);
             }
@@ -173,7 +176,7 @@ function RowAdder(){
                 let tmpTd=document.createElement("td");
                 tmpTd.innerText="0"
                 let className=(j>=header.childElementCount-output.length && j<header.childElementCount)?"output":"_";
-                tmpTd.classList.add(className);
+                tmpTd.classList.add(className,"unclickable");
                 tmpTr.append(tmpTd);
                 
                 
@@ -181,9 +184,11 @@ function RowAdder(){
             table.children[0].append(tmpTr);
         }
         ValueToggle()
+        Menu()
     })
     btn_output.addEventListener("click",()=>{
         ValueToggle()
+        Menu()
         let output=[...document.querySelectorAll(".output")];
         
         let header=document.querySelector("#header")
@@ -203,7 +208,7 @@ function RowAdder(){
             if(table.children[0].children[i].id!="header"){
                 let lastChild=table.children[0].children[i].children[table.children[0].children[i].childElementCount-1]
                 let tmpTd=document.createElement("td");
-                tmpTd.classList.add("output")
+                tmpTd.classList.add("output","unclickable")
                 tmpTd.innerText="0";
                 table.children[0].children[i].append(tmpTd);
                 
@@ -211,10 +216,12 @@ function RowAdder(){
             }
         }
         ValueToggle()
+        Menu()
     })
     let btn_col_tr=document.querySelector(".column_tr");
     btn_col_tr.addEventListener("click",()=>{
         ValueToggle()
+        Menu()
         let header=document.querySelector("#header")
         let table=document.querySelector("table")
         let lastName
@@ -233,11 +240,13 @@ function RowAdder(){
             if(table.children[0].children[i].id!="header"){
                 lastChild=table.children[0].children[i].children[firstChild()-1]
                 let tmpTd=document.createElement("td");
+                tmpTd.classList.add("unclickable");
                 tmpTd.innerText="0";
                 table.children[0].children[i].insertBefore(tmpTd,lastChild);
             }
         }
         ValueToggle()
+        Menu()
 
     })
     
@@ -247,14 +256,16 @@ function RowAdder(){
 RowAdder()
 
 function Delete(){
-    ValueToggle()  
+    ValueToggle()
+    Menu()  
     let del_r=document.querySelector(".Delete_row");
     let del_c=document.querySelector(".Delete_column");
     let del_pos_col=document.querySelector(".Delete_sp_col");
     let del_pos_row=document.querySelector(".Delete_sp_row");
     
     del_r.addEventListener("click",()=>{
-        ValueToggle() 
+        ValueToggle()
+        Menu() 
         
         
         let row=document.querySelectorAll("tr");
@@ -268,10 +279,12 @@ function Delete(){
         }else{
             alert("table at least has 1 row or cell")
         }
-        ValueToggle()  
+        ValueToggle()
+        Menu()  
     })
     del_c.addEventListener("click",()=>{
-        ValueToggle() 
+        ValueToggle()
+        Menu() 
         let row=document.querySelectorAll("tr");
         let output=[...document.querySelectorAll(".opHeader")];
         let i=0;
@@ -296,14 +309,16 @@ function Delete(){
             for(let i=1;i<completeRow;i++){
                 table.children[0].deleteRow(table.children[0].childElementCount-1)
             }
-            ValueToggle()  
+            ValueToggle()
+            Menu()  
 
         }else{
             return""
         }
     })
     del_pos_col.addEventListener("click",()=>{
-        ValueToggle() 
+        ValueToggle()
+        Menu() 
         let table=document.querySelector("table");
         let row=document.querySelectorAll("tr");
         let pos=document.querySelector("#pos_data_col");
@@ -330,11 +345,13 @@ function Delete(){
         }else{
             alert("Position smaller than or bigger than column");
         }
-        ValueToggle()  
+        ValueToggle()
+        Menu()  
     })
     
     del_pos_row.addEventListener("click",()=>{
-        ValueToggle() 
+        ValueToggle()
+        Menu() 
         let table=document.querySelector("table");
         let row=document.querySelectorAll("tr");
         let pos=document.querySelector("#pos_data_row");
@@ -353,7 +370,8 @@ function Delete(){
         }else{
             alert("Position smaller than or bigger than row");
         }
-        ValueToggle()  
+        ValueToggle()
+        Menu()  
     })
 }
 Delete();
