@@ -11,6 +11,10 @@ body {
   overflow: auto;
 }
 
+#table_container {
+  margin: auto 0;
+}
+
 #table_container table {
   font-size: 1em;
   width: 100%;
@@ -18,6 +22,7 @@ body {
   text-align: center;
   color: white;
   font-weight: bold;
+  margin-bottom: 100px !important;
 }
 
 #table_container table td, #table_container table th {
