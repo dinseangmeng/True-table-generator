@@ -123,9 +123,11 @@ function RowAdder(){
                 table.children[0].children[i].insertBefore(tmpTd,lastChild);
             }
         }
+        let someNumber=document.querySelectorAll(".trigger_hd").length;
+        
         
         let output=[...document.querySelectorAll(".opHeader")];
-        let count=Math.pow(2,header.childElementCount-output.length);
+        let count=Math.pow(2,header.childElementCount-output.length-someNumber);
         header=document.querySelector("#header")
         table=document.querySelector("table")
         let completeRow=(count-table.children[0].childElementCount)
@@ -173,6 +175,34 @@ function RowAdder(){
             }
         }
         ValueToggle()
+    })
+    let btn_col_tr=document.querySelector(".column_tr");
+    btn_col_tr.addEventListener("click",()=>{
+        ValueToggle()
+        let header=document.querySelector("#header")
+        let table=document.querySelector("table")
+        let lastName
+        for(let i=0;i<header.childElementCount;i++){
+            if(header.children[i].classList.contains("output")){
+                lastName=header.children[i-1].innerText
+                break
+            }
+        }
+        let tmpHeader=document.createElement("th");
+        tmpHeader.innerText=String.fromCharCode(lastName.charCodeAt(0)+1);
+        tmpHeader.setAttribute("contenteditable","");
+        tmpHeader.classList.add("trigger_hd");
+        header.insertBefore(tmpHeader,header.children[firstChild()]);
+        for(let i=0;i<table.children[0].childElementCount;i++){
+            if(table.children[0].children[i].id!="header"){
+                lastChild=table.children[0].children[i].children[firstChild()-1]
+                let tmpTd=document.createElement("td");
+                tmpTd.innerText="0";
+                table.children[0].children[i].insertBefore(tmpTd,lastChild);
+            }
+        }
+        ValueToggle()
+
     })
     
     
