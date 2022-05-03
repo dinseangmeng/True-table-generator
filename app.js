@@ -33,7 +33,7 @@ function Menu(){
     header.forEach((item,index)=>{
         item.addEventListener("contextmenu",(e)=>{
             const menu=document.querySelector(".menu");
-            menu.style.display="block";
+            menu.style.display="flex";
             menu.style.position="absolute";
             menu.style.top=`${e.pageY}px`;
             menu.style.left=`${e.pageX}px`;
@@ -44,7 +44,7 @@ function Menu(){
     document.addEventListener("contextmenu",(e)=>{
         if(!e.target.classList.contains("unclickable")){
             const menu=document.querySelector(".menu");
-            menu.style.display="block";
+            menu.style.display="flex";
             menu.style.position="absolute";
             menu.style.top=`${e.pageY}px`;
             menu.style.left=`${e.pageX}px`;
@@ -68,6 +68,7 @@ function clearColor(){
     table.addEventListener("mouseleave",()=>{
         for(let i=0;i<TD.length;i++){
             TD[i].style.backgroundColor="";
+            TD[i].style.color="";
         }
     })
 
@@ -79,10 +80,12 @@ function ValueToggle(){
         item.addEventListener("click",()=>{
             for(let i=0;i<TD.length;i++){
                 TD[i].style.backgroundColor="";
+                TD[i].style.color="";
             }
             item.innerText=item.innerText=="0"? "1":"0"
             for(let i=0;i<item.parentElement.children.length;i++){
                 item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
+                item.parentElement.children[i].style.color="rgb(255, 255, 255)"
             }
             
                 
@@ -91,10 +94,12 @@ function ValueToggle(){
         item.addEventListener("contextmenu",(e)=>{
             for(let i=0;i<TD.length;i++){
                 TD[i].style.backgroundColor="";
+                TD[i].style.color="";
             }
             item.innerText="X"
             for(let i=0;i<item.parentElement.children.length;i++){
                 item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
+                item.parentElement.children[i].style.color="rgb(255, 255, 255)"
             }
             clearColor()
             e.preventDefault()
@@ -128,7 +133,7 @@ function RowAdder(){
         for(let i=0;i<header.childElementCount;i++){
             let tmpTd=document.createElement("td");
             tmpTd.innerText="0"
-            let className=(i>=header.childElementCount-output.length && i<header.childElementCount)?"output":"_";
+            let className=(i>=header.childElementCount-output.length && i<header.childElementCount)?"output":"input";
             tmpTd.classList.add(className,"unclickable");
             tmpTr.append(tmpTd);
         }
@@ -157,7 +162,7 @@ function RowAdder(){
             if(table.children[0].children[i].id!="header"){
                 lastChild=table.children[0].children[i].children[firstChild()-1]
                 let tmpTd=document.createElement("td");
-                tmpTd.classList.add("unclickable");
+                tmpTd.classList.add("unclickable","input");
                 tmpTd.innerText="0";
                 table.children[0].children[i].insertBefore(tmpTd,lastChild);
             }
@@ -175,7 +180,7 @@ function RowAdder(){
             for(let j=0;j<header.childElementCount;j++){
                 let tmpTd=document.createElement("td");
                 tmpTd.innerText="0"
-                let className=(j>=header.childElementCount-output.length && j<header.childElementCount)?"output":"_";
+                let className=(j>=header.childElementCount-output.length && j<header.childElementCount)?"output":"input";
                 tmpTd.classList.add(className,"unclickable");
                 tmpTr.append(tmpTd);
                 
