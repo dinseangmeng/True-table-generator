@@ -34,20 +34,37 @@ function Menu(){
         item.addEventListener("contextmenu",(e)=>{
             const menu=document.querySelector(".menu");
             menu.style.display="flex";
-            menu.style.position="absolute";
-            menu.style.top=`${e.pageY}px`;
-            menu.style.left=`${e.pageX}px`;
+            menu.style.right="0px";
             e.preventDefault()
         })
     })
     
     document.addEventListener("contextmenu",(e)=>{
         if(!e.target.classList.contains("unclickable")){
+            
             const menu=document.querySelector(".menu");
             menu.style.display="flex";
-            menu.style.position="absolute";
-            menu.style.top=`${e.pageY}px`;
-            menu.style.left=`${e.pageX}px`;
+            menu.style.right="0px";
+            console.log(e);
+            // if(window.innerHeight-e.offsetY<menu.offsetHeight && window.innerHeight/2<e.offsetY){
+            //     menu.style.top="";
+            //     menu.style.bottom=`${(window.innerHeight-e.offsetY)}px`;
+            //     if(window.innerWidth-e.offsetX<menu.offsetWidth){
+            //         menu.style.left=`${e.offsetX-menu.offsetWidth}px`;
+            //     }else{
+            //         menu.style.left=`${e.offsetX}px`;
+            //     };
+            // }else{
+            //     menu.style.bottom="";
+            //     menu.style.top=`${e.offsetY}px`;
+            //     if(window.innerWidth-e.offsetX<menu.offsetWidth){
+            //         menu.style.left=`${e.offsetX-menu.offsetWidth}px`;
+            //     }else{
+            //         menu.style.left=`${e.offsetX}px`;
+            //     };
+            // }
+
+            
             e.preventDefault()
         }
         e.preventDefault()
@@ -55,7 +72,7 @@ function Menu(){
     document.addEventListener("click",(e)=>{
         if(!e.target.classList.contains("clickable")){
             const menu=document.querySelector(".menu");
-            menu.style.display="none";
+            menu.style.right=`-${menu.offsetWidth}px`
         }else{
             
         }
