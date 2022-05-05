@@ -262,7 +262,7 @@ function RowAdder(){
             if(table.children[0].children[i].id!="header"){
                 lastChild=table.children[0].children[i].children[firstChild()-1]
                 let tmpTd=document.createElement("td");
-                tmpTd.classList.add("unclickable");
+                tmpTd.classList.add("unclickable","input");
                 tmpTd.innerText="0";
                 table.children[0].children[i].insertBefore(tmpTd,lastChild);
             }
