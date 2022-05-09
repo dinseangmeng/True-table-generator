@@ -45,7 +45,6 @@ function Menu(){
             const menu=document.querySelector(".menu");
             menu.style.display="flex";
             menu.style.right="0px";
-            console.log(e);
             // if(window.innerHeight-e.offsetY<menu.offsetHeight && window.innerHeight/2<e.offsetY){
             //     menu.style.top="";
             //     menu.style.bottom=`${(window.innerHeight-e.offsetY)}px`;

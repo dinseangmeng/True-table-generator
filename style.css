@@ -50,16 +50,17 @@ body {
 }
 
 .menu {
+  --menu_width:20vw;
   -webkit-transition: 200ms;
   transition: 200ms;
-  width: 20%;
+  width: var(--menu_width);
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: fixed;
   top: 0;
-  right: -25%;
+  right: calc(-1* var(--menu_width));
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -70,6 +71,27 @@ body {
   padding: .7rem;
   border-radius: .3em;
   border: 3px solid #3700ff;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu {
+    --menu_width:45vw;
+  }
+}
+
+.menu h1 {
+  --font_size:2.5vw;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Square Peg', cursive;
+  font-size: var(--font_size);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu h1 {
+    --font_size:5vw;
+  }
 }
 
 .menu button {
