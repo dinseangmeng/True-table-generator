@@ -48,7 +48,7 @@ body{
     --menu_width:20vw;
     transition: 200ms;
     width: var(--menu_width);
-    height: 100%;
+    
     display:flex;
     position: fixed;
     top: 0;
@@ -60,19 +60,18 @@ body{
     padding: .7rem;
     border-radius: .3em;
     border:3px solid rgb(55, 0, 255);
-    @media only screen and (max-width: 600px) {
-        --menu_width:45vw;
+    @media only screen and (min-width: 1200px) {
+        height: 100%;
     }
-    h1{
-        --font_size:2.5vw;
+    
+    @media only screen and (max-width: 700px) {
+        --menu_width:50vw;
+    }
+    p{
         text-align: center; 
-        font-weight: bold;
-        font-family: 'Square Peg', cursive; 
         font-size:var(--font_size);
         cursor: pointer;
-        @media only screen and (max-width: 600px) {
-            --font_size:5vw;
-        }
+        
     }
     button{
         flex-basis: 90%;

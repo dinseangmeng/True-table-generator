@@ -54,7 +54,6 @@ body {
   -webkit-transition: 200ms;
   transition: 200ms;
   width: var(--menu_width);
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,25 +72,22 @@ body {
   border: 3px solid #3700ff;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 1200px) {
   .menu {
-    --menu_width:45vw;
+    height: 100%;
   }
 }
 
-.menu h1 {
-  --font_size:2.5vw;
+@media only screen and (max-width: 700px) {
+  .menu {
+    --menu_width:50vw;
+  }
+}
+
+.menu p {
   text-align: center;
-  font-weight: bold;
-  font-family: 'Square Peg', cursive;
   font-size: var(--font_size);
   cursor: pointer;
-}
-
-@media only screen and (max-width: 600px) {
-  .menu h1 {
-    --font_size:5vw;
-  }
 }
 
 .menu button {
