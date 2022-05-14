@@ -92,33 +92,41 @@ function clearColor(){
 clearColor()
 function ValueToggle(){
     let TD=[...document.querySelectorAll("td")]
-    TD.forEach((item, index)=>{
-        item.addEventListener("click",()=>{
-            for(let i=0;i<TD.length;i++){
-                TD[i].style.backgroundColor="";
-                TD[i].style.color="";
-            }
-            item.innerText=item.innerText=="0"? "1":"0"
-            for(let i=0;i<item.parentElement.children.length;i++){
-                item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
-                item.parentElement.children[i].style.color="rgb(255, 255, 255)"
+    let TR=[...document.querySelectorAll("tr")]
+
+    TR.forEach((item, index)=>{
+        item.addEventListener("click",(e)=>{
+            if(e.target.tagName=="TD"){
+                for(let i=0;i<TD.length;i++){
+                    TD[i].style.backgroundColor="";
+                    TD[i].style.color="";
+                }
+                e.target.innerText=e.target.innerText=="0"? "1":"0"
+                for(let i=0;i<item.childElementCount;i++){
+                    item.children[i].style.backgroundColor="rgb(0, 0, 0)"
+                    item.children[i].style.color="rgb(255, 255, 255)"
+                }
+                console.log(item.childElementCount);
+
             }
             
                 
             clearColor()
             })
         item.addEventListener("contextmenu",(e)=>{
-            for(let i=0;i<TD.length;i++){
-                TD[i].style.backgroundColor="";
-                TD[i].style.color="";
+            if(e.target.tagName=="TD"){
+                for(let i=0;i<TD.length;i++){
+                    TD[i].style.backgroundColor="";
+                    TD[i].style.color="";
+                }
+                e.target.innerText="X"
+                for(let i=0;i<item.childElementCount;i++){
+                    item.children[i].style.backgroundColor="rgb(0, 0, 0)"
+                    item.children[i].style.color="rgb(255, 255, 255)"
+                }
+                clearColor()
+                e.preventDefault()
             }
-            item.innerText="X"
-            for(let i=0;i<item.parentElement.children.length;i++){
-                item.parentElement.children[i].style.backgroundColor="rgb(0, 0, 0)"
-                item.parentElement.children[i].style.color="rgb(255, 255, 255)"
-            }
-            clearColor()
-            e.preventDefault()
             
         })
     })
