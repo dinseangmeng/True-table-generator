@@ -1,3 +1,4 @@
+![image](https://github.com/Seangmeng1408/True-table-generator/blob/main/cover.png)
 # True table generator
 
 ## Functionality
