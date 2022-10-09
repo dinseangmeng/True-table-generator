@@ -6,18 +6,18 @@
 3. Click on Coulumn field will switch value from (0-1)
 ## Menu Function
 ### Add Row
-Will add new row to table
+* Will add new row to table
 ### Add Coulum
-Will add new Coulumn to table (With this Function it will auto add row to table by quantity of coulumn , 2^n)
+* Will add new Coulumn to table (With this Function it will auto add row to table by quantity of coulumn , 2^n)
 ### Add Coulumn Trigger 
-Add new Coulumn without auto add row
+* Add new Coulumn without auto add row
 ### Delete Row
-By Click this button will delete last row of table
+* By Click this button will delete last row of table
 ### Delete Coulumn
-By Click this button will delete last Coulumn input of table
+* By Click this button will delete last Coulumn input of table
 ### Delete at row 
-just Input position of row and click it delete 
+* just Input position of row and click it delete 
 ### Delete at coulumn 
-just Input position of coulumn and click it delete (Even output coulumn)
+* just Input position of coulumn and click it delete (Even output coulumn)
 ### Generate boolean algebra
-by click it You will get result of Logic function.
+* by click it You will get result of Logic function.
